@@ -13,7 +13,7 @@ def make_predictions(df):
     """
     Uses the pycaret best model to make predictions on data in the df dataframe.
     """
-    model = load_model('LDA')
+    model = load_model('KNN')
     predictions = predict_model(model, data=df)
     predictions.rename({'Label': 'Diabetes_prediction'}, axis=1, inplace=True)
     predictions['Diabetes_prediction'].replace({1: 'Diabetes', 0: 'No diabetes'},
@@ -22,7 +22,7 @@ def make_predictions(df):
 
 
 if __name__ == "__main__":
-    df = load_data('data/new_diabetes_data.csv')
+    df = load_data('new_diabetes_data.csv')
     predictions = make_predictions(df)
     print('predictions:')
     print(predictions)
